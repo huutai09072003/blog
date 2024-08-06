@@ -1,9 +1,12 @@
 var express = require("express");
-
 var router = express.Router();
 
 router.get("/", function(req, res){
-    router.json({"message" : "This is admin page"});
+    res.json({"message" : "This is admin page"});
+})
+
+router.get("/signup", function(req, res){
+    res.render("signup");
 })
 
 module.exports = router;
