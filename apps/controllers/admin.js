@@ -21,6 +21,15 @@ router.post("/signup", function(req, res) {
     if (user.passwd != user.repasswd && user.passwd.trim().length == 0) {
         res.render("signup", {data : {error: "Password is not match!"}})
     }
+
+    user ={
+        email: user.email,
+        password: user.passwd,
+        first_name: user.first_name,
+        last_name: user.last_name
+    }
+
+    user_md.addUser(user);
 })
 
 module.exports = router;
