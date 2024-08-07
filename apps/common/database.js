@@ -20,5 +20,5 @@ function getConnection(){
 }
 
 module.exports = {
-    getConnection: getConnection() 
+    getConnection: getConnection
 }
