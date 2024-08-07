@@ -12,6 +12,10 @@ router.get("/signup", function(req, res){
     res.render("signup",  {data: {}});
 })
 
+router.get("/signin", function(req, res){
+    res.render("signin",  {data: {}});
+})
+
 router.post("/signup", function(req, res) {
     var user = req.body;
 
