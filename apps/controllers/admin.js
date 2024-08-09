@@ -51,6 +51,13 @@ router.post("/signup", function(req, res) {
     // } else{
     //     res.json({message: "Inserted successful!"})
     // }
+
+    router.post("/signin", function(req, res){
+        var params = req.body
+        if (params.trim().length == 0) {
+            res.render("signup", {data : {error: "Please fill the email"}});
+        }
+    })
 })
 
 module.exports = router;

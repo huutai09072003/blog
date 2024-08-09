@@ -24,7 +24,11 @@
 
                     <div style="padding-top:30px" class="panel-body" >
 
-                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        <% if (data&& data.error) {%>
+                            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12">
+                            <%= data.error %>
+                            </div>
+                        <%}%>
                             
                         <form id="loginform" class="form-horizontal" role="form" method="POST" action="">
                                     
