@@ -39,7 +39,7 @@ router.post("/signup", function(req, res) {
     var result= user_md.addUser(user);
 
     result.then(function(data) {
-        res.json({message: "Inserted successful!"});
+        res.redirect("/admin/signin");
         console.log(data);
     }).catch(function(err){
         res.render("signup", {data : {error: "Connect insert User to DB!"}});
@@ -51,13 +51,14 @@ router.post("/signup", function(req, res) {
     // } else{
     //     res.json({message: "Inserted successful!"})
     // }
+})
 
-    router.post("/signin", function(req, res){
-        var params = req.body
-        if (params.trim().length == 0) {
-            res.render("signup", {data : {error: "Please fill the email"}});
-        }
-    })
+router.post("/signin", function(req, res){
+    var params = req.body;
+
+    if (params.email.trim().length == 0) {
+        res.render("signin", {data : {error: "Please fill the email"}});
+    }
 })
 
 module.exports = router;
