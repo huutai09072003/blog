@@ -58,6 +58,26 @@ router.post("/signin", function(req, res){
 
     if (params.email.trim().length == 0) {
         res.render("signin", {data : {error: "Please fill the email"}});
+    } else{
+        var data = user_md.getUserbyEmail(params.email);
+    }
+
+    if (data) {
+        data.then(function(users){
+            var user = users[0];
+
+            var status = helper.compare_password(params.password, user.password);
+
+            if (!status) {
+                res.render("signin", {data : {error: "Wrong password"}});
+            } else{
+                req.session.user = user;
+                console.log(req.session.user);
+                res.redirect("/admin/");
+            }
+        })
+    }else{
+        res.render("signup", {data : {error: "User not exists"}});
     }
 })
 

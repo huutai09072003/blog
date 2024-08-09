@@ -20,12 +20,10 @@ app.set("view engine", "ejs");
 
 app.use("/static", express.static(__dirname + "/public"));
 
-
 var controllers = require(__dirname + "/apps/controllers")
 
 app.use(controllers);
 app.use(bodyParser.json());
-
 
 var host = config.get("server.host")
 var port = config.get("server.port")
