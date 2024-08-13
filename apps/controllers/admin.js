@@ -5,7 +5,8 @@ var user_md = require("../models/user")
 var helper = require("../helpers/helper")
 
 router.get("/", function(req, res){
-    res.json({"message" : "This is admin page"});
+    // res.json({"message" : "This is admin page"});
+    res.render("admin/dashboard", {data: {error: false}});
 })
 
 router.get("/signup", function(req, res){
