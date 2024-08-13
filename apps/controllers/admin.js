@@ -2,11 +2,22 @@ var express = require("express");
 var router = express.Router();
 
 var user_md = require("../models/user")
+var post_md = require("../models/post")
+
 var helper = require("../helpers/helper")
 
 router.get("/", function(req, res){
     // res.json({"message" : "This is admin page"});
-    res.render("admin/dashboard", {data: {error: false}});
+    var data = post_md.getAllPosts()
+    .then(function (posts) {
+        var data ={
+            posts : posts,
+            error: false
+        };
+        res.render("admin/dashboard", {data: data});
+    }).catch(function(err) {
+        res.render("admin/dashboard", {data: {error: "Get post data is Error"}});
+    })
 })
 
 router.get("/signup", function(req, res){
